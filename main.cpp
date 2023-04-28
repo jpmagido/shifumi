@@ -38,20 +38,20 @@ int main() {
             std::cout << "Draw !!\n";
         }
 
-        if (human.score >= 2) {
-            winner = "human";
-        } else if (computer.score >= 2) {
-            winner = "computer";
-        }
+    } while (human.score < 2 && computer.score < 2);
 
-    } while (winner == "nobody");
+    display_scores(human, computer);
 
+    if (human.score > computer.score) {
+        std::cout << "Human wins ! \n";
+    } else {
+        std::cout << "Computer wins ! \n";
+    }
     return 0;
 }
 
 char user_turn() {
     char choice;
-    bool valid_choice = false;
 
     do {
         std::cout << "Choose between ROCK(R), PAPER(P) and SCISSORS(S)\n";
@@ -63,20 +63,17 @@ char user_turn() {
         switch (choice) {
             case 'R':
                 std::cout << "You chose Rock \n";
-                valid_choice = true;
                 break;
             case 'P':
                 std::cout << "You chose Paper \n";
-                valid_choice = true;
                 break;
             case 'S':
                 std::cout << "You chose Scissors \n";
-                valid_choice = true;
                 break;
             default:
                 std::cout << "Please enter a valid option \n";
         }
-    } while (!valid_choice);
+    } while (choice != 'R' && choice != 'P' && choice != 'S');
 
     return choice;
 }
